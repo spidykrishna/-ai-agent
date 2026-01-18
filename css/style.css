@@ -370,3 +370,15 @@ body {
   padding: 40px;
   position: relative;
 }
+/* ===== FIX DEMO OPTION CLICK ===== */
+.demo-options {
+  position: relative;
+  z-index: 10;
+}
+
+.demo-option {
+  position: relative;
+  z-index: 11;
+  cursor: pointer;
+  pointer-events: auto;
+}
