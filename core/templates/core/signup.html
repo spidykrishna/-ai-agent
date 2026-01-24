@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+
+<section class="auth-page">
+  <div class="auth-left">
+    <h1>Create Account</h1>
+    <p>Start using AI Calling Agent</p>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-card">
+      <h2>Sign Up</h2>
+
+      <form method="POST">
+        {% csrf_token %}
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <input name="confirm" type="password" placeholder="Confirm Password" required>
+        <p style="color:red">{{ error }}</p>
+        <button class="hero-btn">Create Account</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+{% block title %}Request a Demo{% endblock %}
+
+{% block content %}
+<section class="page">
+
+  <!-- PAGE HEADER -->
+  <div style="max-width:520px; margin-bottom:30px">
+    <h1>Request a Demo</h1>
+    <p>
+      See how our AI Calling Agent can automate conversations,
+      qualify leads, and help your business scale faster.
+    </p>
+  </div>
+
+  <!-- DEMO FORM CARD (LOGIN-STYLE UI) -->
+  <div class="auth-card">
+
+    <h2 style="margin-bottom:10px">Request a Demo</h2>
+    <p style="font-size:14px;color:#6b7280;margin-bottom:24px">
+      Fill in the details below and our team will reach out to you shortly.
+    </p>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <!-- INPUTS -->
+      <input
+        type="text"
+        name="name"
+        placeholder="Full Name"
+        required
+      >
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Work Email"
+        required
+      >
+
+      <input
+        type="text"
+        name="company"
+        placeholder="Company Name"
+        required
+      >
+
+      <!-- DEMO TYPE -->
+      <p style="margin:18px 0 10px;font-weight:600">
+        Demo Type
+      </p>
+
+      <div style="display:flex; gap:14px; margin-bottom:22px">
+
+        <label style="flex:1; font-weight:600; cursor:pointer">
+          <input type="radio" name="demo_type" value="call" checked>
+          📞 Call Demo
+        </label>
+
+        <label style="flex:1; font-weight:600; cursor:pointer">
+          <input type="radio" name="demo_type" value="text">
+          💬 Text Demo
+        </label>
+
+      </div>
+
+      <!-- CTA -->
+      <button type="submit" class="hero-btn">
+        Request Demo
+      </button>
+
+      <!-- FOOT NOTE -->
+      <p style="
+        margin-top:14px;
+        font-size:13px;
+        color:#6b7280;
+        text-align:center;
+      ">
+        No spam. Our team will contact you within 24 hours.
+      </p>
+
+    </form>
+
+  </div>
+
+</section>
+{% endblock %}

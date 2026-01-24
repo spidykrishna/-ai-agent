@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<section class="auth-page">
+  <div class="auth-left">
+    <h1>Welcome Back</h1>
+    <p>Login to your dashboard.</p>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-card">
+      <h2>Login</h2>
+
+      <form method="POST">
+        {% csrf_token %}
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <p style="color:red">{{ error }}</p>
+        <button class="hero-btn">Login</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

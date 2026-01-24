@@ -1,0 +1,114 @@
+{% extends 'core/base.html' %}
+{% block title %}AI Calling Agent – Home{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<section class="page">
+  <h1>
+    AI Calling Agents That <br>
+    Convert Conversations Into Customers
+  </h1>
+
+  <p>
+    Automate outbound and inbound calls using human-like AI voice agents.
+    Qualify leads, confirm orders, book appointments, and scale your
+    business conversations — 24/7, without hiring more agents.
+  </p>
+
+  <div style="margin-top:30px">
+    <a href="{% url 'signup' %}" class="btn primary">Get Started Free</a>
+    <a href="{% url 'demo' %}" class="btn ghost" style="margin-left:12px">
+  Request a Demo
+</a>
+  </div>
+</section>
+
+<!-- ================= TRUST / VALUE SECTION ================= -->
+<section class="page">
+  <h2>Why Businesses Choose Our AI Calling Agent</h2>
+
+  <div class="cards">
+    <div class="card">
+      🤖 <strong>Human-Like Conversations</strong><br><br>
+      Our AI understands intent, tone, and context to deliver natural
+      conversations that customers actually engage with.
+    </div>
+
+    <div class="card">
+      ⚡ <strong>Instant Lead Response</strong><br><br>
+      Call new leads within seconds instead of hours and dramatically
+      improve conversion rates.
+    </div>
+
+    <div class="card">
+      📊 <strong>Actionable Call Insights</strong><br><br>
+      Get summaries, sentiment analysis, and interest level after
+      every call — no manual review needed.
+    </div>
+
+    <div class="card">
+      🔗 <strong>Easy CRM Integration</strong><br><br>
+      Sync call data directly into your CRM or internal systems
+      without changing your workflow.
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="page">
+  <h2>How It Works</h2>
+
+  <div class="cards">
+    <div class="card">
+      <strong>1. Upload Your Leads</strong><br><br>
+      Import leads manually or connect your CRM to start calling
+      instantly.
+    </div>
+
+    <div class="card">
+      <strong>2. AI Makes Smart Calls</strong><br><br>
+      Our AI handles conversations, objections, follow-ups, and
+      qualification automatically.
+    </div>
+
+    <div class="card">
+      <strong>3. Get Qualified Results</strong><br><br>
+      Receive only interested and relevant leads with full call
+      summaries.
+    </div>
+  </div>
+</section>
+
+<!-- ================= USE CASES ================= -->
+<section class="page">
+  <h2>Built for High-Growth Teams</h2>
+
+  <div class="cards">
+    <div class="card">🛒 E-commerce Order Confirmation</div>
+    <div class="card">🏢 Real Estate Lead Qualification</div>
+    <div class="card">💇 Salon & Appointment Booking</div>
+    <div class="card">📞 Sales & Call Centers</div>
+    <div class="card">📣 Marketing & Ad Agencies</div>
+    <div class="card">🧑‍💼 Customer Support Follow-ups</div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="page">
+  <h2>Start Scaling Conversations Today</h2>
+
+  <p>
+    Replace manual calling with intelligent AI voice agents and grow
+    faster without increasing headcount or operational costs.
+  </p>
+
+  <div style="margin-top:30px">
+    <a href="{% url 'signup' %}" class="btn primary">Create Free Account</a>
+    <a href="{% url 'demo' %}" class="btn ghost" style="margin-left:12px">
+  Request a Demo
+</a>
+  </div>
+</section>
+
+{% endblock %}
