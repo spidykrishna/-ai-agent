@@ -1,123 +1,152 @@
-# 🤖 AI Calling Agent – Frontend
+# AI Calling Agent 🚀
 
-A modern, premium SaaS-style frontend for an **AI Calling Agent platform**.  
-This project includes authentication flow, protected dashboard access, and an interactive **Request a Demo** modal with demo-type selection.
+AI Calling Agent is a Django-based web application that presents a modern SaaS-style interface for an AI-powered calling solution.  
+The project focuses on clean UI, proper Django structure, and scalability for future backend and AI integrations.
 
----
-
-## 🚀 Features
-
-- ✅ Modern SaaS landing page UI
-- ✅ Authentication flow (Signup → Login → Dashboard)
-- ✅ Protected dashboard (unauthorized users redirected)
-- ✅ Logout functionality
-- ✅ Request a Demo modal (Call / Text demo options)
-- ✅ Premium card-based sections
-- ✅ Responsive layout (desktop-first)
-- ✅ Clean, modular file structure
-- ✅ Backend / ML integration ready
+This application includes authentication pages, informational pages, a dashboard, and a professionally designed **Request a Demo** flow.
 
 ---
 
-## 🧩 Demo Options
+## ✨ Features
 
-Inside **Request a Demo**, users can choose:
-- 📞 Demo for Call
-- 💬 Demo for Text
-
-The selected option is stored and ready to be sent to backend APIs.
+- 🏠 Modern landing page (Home)
+- 🔐 User Authentication (Login & Signup)
+- 📊 User Dashboard
+- 📄 Informational pages:
+  - Solutions
+  - Features
+  - Pricing
+  - Contact
+- 🧪 Request a Demo page with a clean SaaS-style UI
+- 🎨 Custom responsive UI (no CSS frameworks)
+- 🧩 Django template inheritance (`base.html`)
+- 📁 Static file management (CSS & JavaScript)
 
 ---
 
-## 🗂️ Project Structure
+## 🛠 Tech Stack
 
-ai-calling-agent/
+### Frontend
+- HTML5  
+- CSS3 (Custom styling)  
+- JavaScript (UI interactions & animations)
+
+### Backend
+- Python 3  
+- Django Framework
+
+### Tools & Concepts
+- Django Authentication System  
+- Django Templates  
+- Static Files Handling  
+
+---
+
+## 📂 Project Structure
+
+```text
+ai-agent/
 │
-├── index.html
-├── login.html
-├── signup.html
-├── dashboard.html
-├── features.html
-├── pricing.html
-├── solutions.html
-├── contact.html
+├── manage.py
+├── ai_calling_agent/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
 │
-├── css/
-│ └── style.css
+├── core/
+│   ├── views.py
+│   ├── urls.py
+│   ├── models.py
+│   └── templates/
+│       └── core/
+│           ├── base.html
+│           ├── index.html
+│           ├── login.html
+│           ├── signup.html
+│           ├── dashboard.html
+│           ├── demo.html
+│           ├── pricing.html
+│           ├── features.html
+│           ├── solutions.html
+│           └── contact.html
 │
-├── js/
-│ ├── main.js
-│ ├── dashboard.js
-│ └── animations.js
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       ├── main.js
+│       └── animations.js
 │
+├── venv/
 └── README.md
+⚙️ Setup & Installation
+Follow the steps below to run the project locally.
 
+1️⃣ Clone the repository
+bash
+Copy code
+git clone https://github.com/spidykrishna/-ai-agent.git
+cd ai-agent
+2️⃣ Create & activate virtual environment
+bash
+Copy code
+python -m venv venv
+Windows
 
----
+bash
+Copy code
+venv\Scripts\activate
+Mac / Linux
 
-## 🔐 Authentication Logic (Frontend)
+bash
+Copy code
+source venv/bin/activate
+3️⃣ Install Django
+bash
+Copy code
+pip install django
+4️⃣ Apply migrations
+bash
+Copy code
+python manage.py migrate
+5️⃣ Run the development server
+bash
+Copy code
+python manage.py runserver
+6️⃣ Open in browser
+cpp
+Copy code
+http://127.0.0.1:8000/
+🧪 Request a Demo
+The Request a Demo page allows users to submit:
 
-- Signup stores credentials in `localStorage`
-- Login validates credentials
-- On successful login:
-  - `is_authenticated = true`
-  - User is redirected to `dashboard.html`
-- Dashboard is protected using `dashboard.js`
-- Logout clears authentication state
+Full Name
 
-> ⚠️ Note: This is **frontend-only auth** (for demo/MVP).  
-> Replace with backend auth in production.
+Work Email
 
----
+Company Name
 
-## 🧪 How to Run Locally
+Demo Type (Call / Text)
 
-### Option 1: Using VS Code (Recommended)
-1. Open project folder in VS Code
-2. Install **Live Server** extension
-3. Right-click `index.html` → **Open with Live Server**
+Currently, the form is focused on UI/UX and is ready to be connected to a database or backend service.
+```
+🚀 Future Enhancements
+Save demo requests to database
 
-### Option 2: Direct Browser
-- Open `index.html` directly (some features may be limited)
+Admin panel for demo leads
 
----
+Email notifications on demo request
 
-## 🛠️ Tech Stack
+AI calling API integration
 
-- HTML5
-- CSS3 (Modern UI, gradients, glass effects)
-- Vanilla JavaScript
-- GSAP (for scroll animations)
-- LocalStorage (temporary auth state)
+Advanced dashboard analytics
 
----
+Improved mobile responsiveness
 
-## 📌 Future Enhancements
+👨‍💻 Author
+Krishna Sharma
+GitHub: https://github.com/spidykrishna
 
-- 🔗 Backend API integration
-- 🤖 AI calling & messaging APIs
-- 📊 Dashboard analytics
-- 👤 Multi-user authentication
-- 🌙 Dark mode
-- 📱 Full mobile responsiveness
-
----
-
-## ⚠️ Disclaimer
-
-This project is a **frontend MVP / prototype**.  
-Do **not** use localStorage authentication in production environments.
-
----
-
-## 👨‍💻 Author
-
-Built with ❤️ for an AI SaaS startup project.  
-Frontend ready for backend & ML integration.
-
----
-
-## 📄 License
-
-This project is for educational / demo purposes.
-
+📜 License
+This project is created for educational and demonstration purposes.
