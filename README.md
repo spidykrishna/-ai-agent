@@ -84,12 +84,12 @@ ai-agent/
 ## ⚙️ Setup & Installation
 Follow the steps below to run the project locally.
 
-##1️⃣ Clone the repository
+## 1️⃣ Clone the repository
 bash
 Copy code
 git clone https://github.com/spidykrishna/-ai-agent.git
 cd ai-agent
-##2️⃣ Create & activate virtual environment
+## 2️⃣ Create & activate virtual environment
 bash
 Copy code
 python -m venv venv
@@ -103,19 +103,19 @@ Mac / Linux
 bash
 Copy code
 source venv/bin/activate
-##3️⃣ Install Django
+## 3️⃣ Install Django
 bash
 Copy code
 pip install django
-##4️⃣ Apply migrations
+## 4️⃣ Apply migrations
 bash
 Copy code
 python manage.py migrate
-##5️⃣ Run the development server
+## 5️⃣ Run the development server
 bash
 Copy code
 python manage.py runserver
-##6️⃣ Open in browser
+## 6️⃣ Open in browser
 cpp
 Copy code
 http://127.0.0.1:8000/
@@ -145,7 +145,7 @@ Advanced dashboard analytics
 
 Improved mobile responsiveness
 
-##👨‍💻 Author
+## 👨‍💻 Author
 Krishna Sharma
 GitHub: https://github.com/spidykrishna
 
