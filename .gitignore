@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+ai_calling_agent/venv/
+
+# Django
+db.sqlite3
+
+# VS Code
+.vscode/

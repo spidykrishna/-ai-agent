@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # AI Calling Agent 🚀
+=======
+<!-- # 🤖 AI Calling Agent – Frontend
+>>>>>>> 2c5a2ca (Remove venv and cache files, update core app)
 
 AI Calling Agent is a Django-based web application that presents a modern SaaS-style interface for an AI-powered calling solution.  
 The project focuses on clean UI, proper Django structure, and scalability for future backend and AI integrations.
@@ -149,5 +153,17 @@ Improved mobile responsiveness
 Krishna Sharma
 GitHub: https://github.com/spidykrishna
 
+<<<<<<< HEAD
 📜 License
 This project is created for educational and demonstration purposes.
+=======
+Built with ❤️ for an AI SaaS startup project.  
+Frontend ready for backend & ML integration.
+
+---
+
+## 📄 License
+
+This project is for educational / demo purposes.
+ -->
+>>>>>>> 2c5a2ca (Remove venv and cache files, update core app)

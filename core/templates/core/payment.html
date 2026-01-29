@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<section class="page">
+  <h1>Complete Your Payment</h1>
+
+  <button id="pay-btn" class="btn primary">
+    Pay ₹2999
+  </button>
+</section>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+  "key": "{{ razorpay_key }}",
+  "amount": "{{ amount }}",
+  "currency": "INR",
+  "order_id": "{{ order_id }}",
+  "name": "AI Calling Agent",
+  "description": "Premium Plan",
+  "handler": function (response){
+      alert("Payment Successful!");
+      console.log(response);
+  }
+};
+
+var rzp1 = new Razorpay(options);
+document.getElementById('pay-btn').onclick = function(e){
+  rzp1.open();
+  e.preventDefault();
+}
+</script>
+{% endblock %}

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 def home(request):
@@ -89,3 +91,24 @@ def demo(request):
         print(name, email, company, demo_type)
 
     return render(request, 'core/demo.html')
+from django.shortcuts import render
+from django.http import JsonResponse
+import razorpay
+from django.conf import settings
+
+
+def create_payment(request):
+    if request.method == "POST":
+        client = razorpay.Client(
+            auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
+        )
+
+        order = client.order.create({
+            "amount": 299900,  # ₹2999
+            "currency": "INR",
+            "payment_capture": 1
+        })
+
+        return JsonResponse(order)
+
+    return JsonResponse({"error": "Invalid request"}, status=400)

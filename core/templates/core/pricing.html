@@ -1,22 +1,37 @@
 {% extends 'core/base.html' %}
 {% block title %}Pricing{% endblock %}
-{% block content %}
 
+
+{% block content %}
 <section class="page">
   <h1>Pricing</h1>
   <p>Simple and transparent pricing.</p>
 
   <div class="cards">
+    <!-- STARTER PLAN -->
     <div class="card">
       <h3>Starter</h3>
       <p>₹2,999 / month</p>
       <p>Up to 1,000 calls</p>
+
+      <button
+        type="button"
+        class="btn primary"
+        onclick="startPayment()"
+        style="margin-top:15px;"
+      >
+        Buy Starter
+      </button>
     </div>
+
+    <!-- GROWTH PLAN -->
     <div class="card">
       <h3>Growth</h3>
       <p>₹6,999 / month</p>
       <p>Up to 5,000 calls</p>
     </div>
+
+    <!-- ENTERPRISE PLAN -->
     <div class="card">
       <h3>Enterprise</h3>
       <p>Custom Pricing</p>
@@ -24,5 +39,68 @@
     </div>
   </div>
 </section>
+{% endblock %}
 
+{% block scripts %}
+<!-- Razorpay Checkout -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+// 🔥 DEBUG: confirm JS is loaded
+console.log("Pricing JS loaded");
+
+// MAIN PAYMENT FUNCTION
+function startPayment() {
+  console.log("Buy Starter clicked");
+
+  fetch("/pay/", {
+    method: "POST",
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken")
+    }
+  })
+  .then(response => response.json())
+  .then(order => {
+    console.log("Order created:", order);
+
+    var options = {
+      "key": "rzp_test_xxxxxxxx",   // 🔴 REPLACE WITH YOUR REAL KEY
+      "amount": order.amount,
+      "currency": "INR",
+      "name": "AI Calling Agent",
+      "description": "Starter Plan",
+      "order_id": order.id,
+      "handler": function (response) {
+        alert("Payment Successful 🎉");
+        console.log(response);
+      },
+      "theme": {
+        "color": "#6366f1"
+      }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+  })
+  .catch(error => {
+    console.error("Payment error:", error);
+  });
+}
+
+// CSRF helper (REQUIRED for Django)
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let cookie of cookies) {
+      cookie = cookie.trim();
+      if (cookie.startsWith(name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+</script>
 {% endblock %}
