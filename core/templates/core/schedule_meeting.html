@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% block title %}Schedule a Demo{% endblock %}
+
+{% block content %}
+<section class="page">
+  <h1>Schedule Your Demo</h1>
+  <p>
+    Pick a time that suits you.  
+    You’ll instantly get a Google Meet invite.
+  </p>
+
+  <div style="margin-top:40px;">
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/krishnawork69/30min
+      ?name={{ request.user.get_full_name|default:'' }}
+      &email={{ request.user.email|default:'' }}"
+      style="min-width:320px;height:700px;">
+    </div>
+
+    <script
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async>
+    </script>
+  </div>
+</section>
+{% endblock %}

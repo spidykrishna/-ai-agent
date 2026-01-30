@@ -3,7 +3,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-
+from django.http import JsonResponse
+import razorpay
+from django.conf import settings
 
 
 def home(request):
@@ -80,21 +82,16 @@ def dashboard(request):
     return render(request, 'core/dashboard.html', {
         'email': request.user.email
     })
+from django.shortcuts import render, redirect
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def demo(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        company = request.POST.get("company")
-        demo_type = request.POST.get("demo_type")
+        return redirect("schedule_meeting")
 
-        # later: save to database / email
-        print(name, email, company, demo_type)
-
-    return render(request, 'core/demo.html')
-from django.shortcuts import render
-from django.http import JsonResponse
-import razorpay
-from django.conf import settings
+    return render(request, "core/demo.html")
 
 
 def create_payment(request):
@@ -112,3 +109,8 @@ def create_payment(request):
         return JsonResponse(order)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
+def schedule_meeting(request):
+    return render(request, "core/schedule_meeting.html")
+@login_required
+def schedule_meeting(request):
+    return render(request, "core/schedule_meeting.html")

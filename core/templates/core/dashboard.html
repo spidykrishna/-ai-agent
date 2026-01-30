@@ -6,11 +6,19 @@
   <h1>Your Dashboard</h1>
 
   <div class="cards">
-    <div class="card">User: {{ request.user.email }}</div>
-    <div class="card">Total Calls: XXX</div>
-    <div class="card">Leads Converted: XX</div>
-    <div class="card">AI Status: Active</div>
-  </div>
+  <div class="card">User: {{ request.user.email }}</div>
+  <div class="card">Total Calls: XXX</div>
+  <div class="card">Leads Converted: XX</div>
+  <div class="card">AI Status: Active</div>
+</div>
+
+<!-- NEXT LINE / SEPARATE ROW -->
+<div style="margin-top:40px; text-align:center;">
+  <a href="{% url 'demo' %}" class="btn primary">
+    Request a Demo
+  </a>
+</div>
+
 </section>
 
 {% endblock %}
