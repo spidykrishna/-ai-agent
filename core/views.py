@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import razorpay
+import json
+from .models import DemoRequest, Payment
 from django.conf import settings
-
 
 def home(request):
     return render(request, 'core/index.html')
@@ -89,28 +90,37 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def demo(request):
     if request.method == "POST":
+        DemoRequest.objects.create(
+            user=request.user,
+            name=request.POST.get("name"),
+            email=request.POST.get("email"),
+            company=request.POST.get("company"),
+            demo_type=request.POST.get("demo_type"),
+        )
+
+        # 🔁 Redirect to Calendly after saving
         return redirect("schedule_meeting")
 
     return render(request, "core/demo.html")
 
-
+@login_required
 def create_payment(request):
     if request.method == "POST":
-        client = razorpay.Client(
-            auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
-        )
+        try:
+            data = json.loads(request.body)
+            amount = int(data.get("amount", 0)) * 100  # convert to paise
 
-        order = client.order.create({
-            "amount": 299900,  # ₹2999
-            "currency": "INR",
-            "payment_capture": 1
-        })
+            return JsonResponse({
+                "id": "order_test_123",
+                "amount": amount
+            })
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
 
-        return JsonResponse(order)
-
-    return JsonResponse({"error": "Invalid request"}, status=400)
-def schedule_meeting(request):
-    return render(request, "core/schedule_meeting.html")
 @login_required
 def schedule_meeting(request):
-    return render(request, "core/schedule_meeting.html")
+    return redirect(
+        "https://calendly.com/yourname/ai-calling-demo"
+        "?name=" + request.user.get_full_name() +
+        "&email=" + request.user.email
+    )

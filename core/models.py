@@ -11,3 +11,14 @@ class Payment(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class DemoRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    company = models.CharField(max_length=100)
+    demo_type = models.CharField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.demo_type}"
