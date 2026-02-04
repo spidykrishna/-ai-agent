@@ -1,23 +1,19 @@
 from pathlib import Path
+import os
 
 # --------------------------------------------------
 # BASE DIRECTORY
 # --------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # --------------------------------------------------
 # SECURITY SETTINGS
 # --------------------------------------------------
 SECRET_KEY = 'django-insecure-change-this-key'
 
-DEBUG = False
+DEBUG = True   # ✅ IMPORTANT for Railway dev
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost',
-        'ai-agent.onrender.com',
-        'neurospeech.in',
-        'www.neurospeech.com']
-
+ALLOWED_HOSTS = ['*']   # ✅ Railway requires this
 
 # --------------------------------------------------
 # APPLICATION DEFINITION
@@ -29,17 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'core',   # your app
+    'core',
 ]
 
-
 # --------------------------------------------------
-# MIDDLEWARE (IMPORTANT – DO NOT CHANGE ORDER)
+# MIDDLEWARE
 # --------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,12 +41,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 # --------------------------------------------------
 # URL CONFIG
 # --------------------------------------------------
 ROOT_URLCONF = 'ai_calling_agent.urls'
-
 
 # --------------------------------------------------
 # TEMPLATES
@@ -61,7 +52,7 @@ ROOT_URLCONF = 'ai_calling_agent.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates' ],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,15 +65,13 @@ TEMPLATES = [
     },
 ]
 
-
 # --------------------------------------------------
 # WSGI
 # --------------------------------------------------
 WSGI_APPLICATION = 'ai_calling_agent.wsgi.application'
 
-
 # --------------------------------------------------
-# DATABASE (SQLite – Perfect for now)
+# DATABASE
 # --------------------------------------------------
 DATABASES = {
     'default': {
@@ -91,47 +80,29 @@ DATABASES = {
     }
 }
 
-
 # --------------------------------------------------
 # PASSWORD VALIDATION
 # --------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
-
 
 # --------------------------------------------------
 # LANGUAGE & TIMEZONE
 # --------------------------------------------------
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Asia/Kolkata'
-
 USE_I18N = True
 USE_TZ = True
 
-
 # --------------------------------------------------
-# STATIC FILES (CSS, JS, IMAGES)
+# STATIC FILES
 # --------------------------------------------------
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # --------------------------------------------------
 # AUTH REDIRECTS
@@ -140,13 +111,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
 
-
 # --------------------------------------------------
 # DEFAULT PRIMARY KEY
 # --------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-import os
-
-RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
-RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
