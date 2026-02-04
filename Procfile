@@ -1,1 +1,0 @@
-web: gunicorn ai-agent.wsgi
