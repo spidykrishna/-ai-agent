@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 # --------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -101,8 +102,20 @@ USE_TZ = True
 # --------------------------------------------------
 # STATIC FILES
 # --------------------------------------------------
+
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Where collectstatic will put files (DESTINATION)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Where Django will SEARCH for static files (SOURCE)
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',   # only if you have a /static folder
+]
+
 
 # --------------------------------------------------
 # AUTH REDIRECTS
