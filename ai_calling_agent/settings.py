@@ -10,10 +10,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY SETTINGS
 # --------------------------------------------------
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-change-this-key")
-DEBUG = os.getenv("DJANGO_DEBUG") == "True"  # ✅ IMPORTANT for Railway dev
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]  # ❗ force env variable
 
-ALLOWED_HOSTS = ['*']   # ✅ Railway requires this
+DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+
+ALLOWED_HOSTS = [
+    "uim7xeag.up.railway.app",
+    "neurospeech.in",
+    "www.neurospeech.in",
+]
 
 # --------------------------------------------------
 # APPLICATION DEFINITION
@@ -103,18 +108,17 @@ USE_TZ = True
 # STATIC FILES
 # --------------------------------------------------
 
-from pathlib import Path
-BASE_DIR = Path(__file__).resolve().parent.parent
+# --------------------------------------------------
+# STATIC FILES
+# --------------------------------------------------
 
 STATIC_URL = '/static/'
-
-# Where collectstatic will put files (DESTINATION)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Where Django will SEARCH for static files (SOURCE)
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',   # only if you have a /static folder
+    BASE_DIR / 'static',
 ]
+
 
 
 # --------------------------------------------------
