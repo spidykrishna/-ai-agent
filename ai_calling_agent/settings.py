@@ -9,9 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # --------------------------------------------------
 # SECURITY SETTINGS
 # --------------------------------------------------
-SECRET_KEY = 'django-insecure-change-this-key'
 
-DEBUG = True   # ✅ IMPORTANT for Railway dev
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-change-this-key")
+DEBUG = os.getenv("DJANGO_DEBUG") == "True"  # ✅ IMPORTANT for Railway dev
 
 ALLOWED_HOSTS = ['*']   # ✅ Railway requires this
 
