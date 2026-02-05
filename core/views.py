@@ -9,6 +9,12 @@ import json
 from .models import DemoRequest, Payment
 from django.conf import settings
 
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("NeuroSpeech is Live 🚀")
+
 def home(request):
     return render(request, 'core/index.html')
 
