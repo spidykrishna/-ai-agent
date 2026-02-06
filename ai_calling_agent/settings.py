@@ -15,7 +15,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]  # ❗ force env variable
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
-    "uim7xeag.up.railway.app",
+    "oiv8i0xr.up.railway.app",
     "neurospeech.in",
     "www.neurospeech.in",
 ]
