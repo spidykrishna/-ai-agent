@@ -132,3 +132,9 @@ LOGOUT_REDIRECT_URL = 'login'
 # DEFAULT PRIMARY KEY
 # --------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://neurospeech.in",
+    "https://www.neurospeech.in",
+]
