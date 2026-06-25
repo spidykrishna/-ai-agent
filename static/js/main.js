@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================= LOGIN ================= */
+  
   const loginForm = document.getElementById("loginForm");
 
   if (loginForm) {
@@ -24,15 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // ✅ LOGIN SUCCESS
+       
       localStorage.setItem("is_authenticated", "true");
 
-      // 🔥 FORCE REDIRECT
+      
       window.location.replace("dashboard.html");
     });
   }
 
-  /* ================= SIGNUP ================= */
+   
   const signupForm = document.getElementById("signupForm");
 
   if (signupForm) {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-/* ================= LOGOUT ================= */
+ 
 document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
 
@@ -71,12 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // Clear session
       localStorage.removeItem("is_authenticated");
 
-      // Redirect to login
+      
       window.location.replace("login.html");
     });
   }
 });
-/* ================= REQUEST DEMO MODAL ================= */
+ 
 document.addEventListener("DOMContentLoaded", () => {
   const demoModal = document.getElementById("demoModal");
   const closeDemo = document.getElementById("closeDemo");
@@ -104,14 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  // CLOSE MODAL
+  
   if (closeDemo) {
     closeDemo.addEventListener("click", () => {
       demoModal.style.display = "none";
     });
   }
 
-  // CLOSE ON BACKGROUND CLICK
+   
   if (demoModal) {
     demoModal.addEventListener("click", (e) => {
       if (e.target === demoModal) {
@@ -120,20 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 ;
-/* ================= DEMO TYPE SELECTION ================= */
+ 
 document.addEventListener("DOMContentLoaded", () => {
   const demoOptions = document.querySelectorAll(".demo-option");
   const demoTypeInput = document.getElementById("demoType");
 
   demoOptions.forEach(option => {
     option.addEventListener("click", () => {
-      // remove active from all
+       
       demoOptions.forEach(o => o.classList.remove("active"));
 
-      // add active to clicked
+       
       option.classList.add("active");
 
-      // update hidden input
+       
       if (demoTypeInput) {
         demoTypeInput.value = option.dataset.type;
       }
